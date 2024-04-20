@@ -27,7 +27,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: build_dashboard/locust-grafana
-          platforms: linux/amd64 #,linux/arm64
+          platforms: linux/arm64 #linux/amd64 #,
           push: true
           tags: sky5367/locust-grafana:3
 
@@ -35,6 +35,6 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: build_dashboard/locust-timescale
-          platforms: linux/amd64 #,linux/arm64
+          platforms: linux/arm64 # linux/amd64 #,
           push: true
           tags: sky5367/locust-timescale:6
