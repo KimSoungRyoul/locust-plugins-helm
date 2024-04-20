@@ -2,7 +2,6 @@
 
 ![Version: 0.31.5](https://img.shields.io/badge/Version-0.31.5-informational?style=flat-square) ![AppVersion: 2.15.1](https://img.shields.io/badge/AppVersion-2.15.1-informational?style=flat-square)
 
-
 ~~~
 kubectl create ns locust-plugin
 kubectl create configmap loadtest-lib --from-file locust/locustfiles/example/lib -n locust-plugin
