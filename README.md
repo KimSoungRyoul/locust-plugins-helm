@@ -4,8 +4,8 @@
 
 ~~~
 kubectl create ns locust-plugin
-kubectl create configmap loadtest-lib --from-file locust/locustfiles/example/lib -n locust-plugin
-kubectl create configmap loadtest-locustfile --from-file locust/locustfiles/example/main.py -n locust-plugin
+kubectl create configmap loadtest-lib --from-file locustfiles/example/lib -n locust-plugin
+kubectl create configmap loadtest-locustfile --from-file locustfiles/example/main.py -n locust-plugin
 
 helm upgrade --install -n locust-plugin locust ./locust \
   --set loadtest.name=my-loadtest \

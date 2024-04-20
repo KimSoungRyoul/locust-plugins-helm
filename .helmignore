@@ -1,6 +1,10 @@
 # Patterns to ignore when building packages.
 # This supports shell glob matching, relative path matching, and
 # negation (prefixed with !). Only one pattern per line.
+.venv
+.idea
+build_dashboard
+
 .DS_Store
 # Common VCS dirs
 .git/
