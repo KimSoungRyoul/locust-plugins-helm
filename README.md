@@ -1,6 +1,7 @@
-# locust-plugin
+# locust-plugins-helm
 
 * based-on deliveryhero/locust
+* Alternative: [Locust-Swarm](https://github.com/SvenskaSpel/locust-swarm)
 
 ![Version: 0.31.5](https://img.shields.io/badge/Version-0.31.5-informational?style=flat-square) ![AppVersion: 2.15.1](https://img.shields.io/badge/AppVersion-2.15.1-informational?style=flat-square)
 
