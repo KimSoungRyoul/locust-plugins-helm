@@ -42,7 +42,7 @@ image:
   pullPolicy: IfNotPresent
 
 service:
-  type: ClusterIP
+  type: LoadBalancer
   annotations: {}
   extraLabels: {}
 
@@ -141,14 +141,14 @@ worker:
   affinity: {}
 
 timescale_db:
-  image: "sky5367/locust-timescale:6"
+  image: "sky5367/locust-plugins-timescale:latest"
   pg_port: "5432"
   pg_user: "postgres"
   pg_password: "password"
   pg_host: "postgres.ad-ai-loadtest.svc.cluster.local"
 
 locust_dashboard:
-  image: "sky5367/locust-grafana:3"
+  image: "sky5367/locust-plugins-grafana:latest"
   grafana_host: "grafana.ad-ai-loadtest.svc.cluster.local:3000"
 
 

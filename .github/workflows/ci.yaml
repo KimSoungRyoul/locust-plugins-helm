@@ -23,6 +23,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+
       - name: Build grafana and push
         uses: docker/build-push-action@v5
         with:
@@ -32,7 +33,7 @@ jobs:
             linux/arm64
             linux/arm/v7
           push: true
-          tags: sky5367/locust-grafana:3
+          tags: sky5367/locust-plugins-grafana:4.4.2,sky5367/locust-plugins-grafana:latest
 
       - name: Build timescale and push
         uses: docker/build-push-action@v5
@@ -44,4 +45,4 @@ jobs:
             linux/arm64
             linux/arm/v7
           push: true
-          tags: sky5367/locust-timescale:6
+          tags: sky5367/locust-plugins-timescale:4.4.2,sky5367/locust-plugins-timescale:latest
