@@ -1,0 +1,17 @@
+apiVersion: 1
+
+datasources:
+- name: PostgreSQL
+  type: postgres
+  access: proxy
+  orgId: 1
+  url: "hostname:port"
+  database: "postgres"
+  user: "your_user"
+  secureJsonData:
+    password: "password"
+  isDefault: true
+  jsonData:
+    sslMode: "disable"  # "disable", "require", "verify-ca" 또는 "verify-full" 중 하나
+    postgresVersion: 1200  # PostgreSQL 버전
+    timescaledb: true  # TimescaleDB 사용 여부

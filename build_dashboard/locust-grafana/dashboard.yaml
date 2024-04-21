@@ -1,0 +1,12 @@
+apiVersion: 1
+
+providers:
+  - name: 'locust-plugin-helm'  # 공급자 이름
+    orgId: 1         # 조직 ID
+    folder: ''       # 대시보드가 저장될 폴더
+    type: file       # 파일 타입
+    disableDeletion: false  # 파일이 삭제되어도 Grafana에서 대시보드 제거 안 함
+    editable: true   # 대시보드를 편집 가능하도록 설정
+    updateIntervalSeconds: 10  # 업데이트 간격(초)
+    options:
+      path: /etc/grafana/provisioning/dashboards  # 대시보드 파일이 위치할 경로
