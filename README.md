@@ -1,14 +1,19 @@
 # locust-plugin
 
+* based-on deliveryhero/locust
+
 ![Version: 0.31.5](https://img.shields.io/badge/Version-0.31.5-informational?style=flat-square) ![AppVersion: 2.15.1](https://img.shields.io/badge/AppVersion-2.15.1-informational?style=flat-square)
 
 ~~~
-kubectl create ns locust-plugin
-kubectl create configmap loadtest-lib --from-file locustfiles/example/lib -n locust-plugin
-kubectl create configmap loadtest-locustfile --from-file locustfiles/example/main.py -n locust-plugin
+kubectl create ns locust-plugins
+helm repo add locust-plugins https://kimsoungryoul.github.io/locust-plugins-helm
+helm upgrade -i locust-plugins locust-plugins/locust-plugins -n locust-plugins
 
-helm upgrade --install -n locust-plugin locust ./locust \
-  --set loadtest.name=my-loadtest \
+kubectl create configmap loadtest-lib --from-file locustfiles/example/lib -n locust-plugins
+kubectl create configmap loadtest-locustfile --from-file locustfiles/example/main.py -n locust-plugins
+
+helm upgrade -i -n locust-plugins locust-loadtest locust-plugins/locust-plugins \
+  --set loadtest.name=hello-loadtest \
   --set loadtest.locust_locustfile_configmap=loadtest-locustfile \
   --set loadtest.locust_lib_configmap=loadtest-lib
 

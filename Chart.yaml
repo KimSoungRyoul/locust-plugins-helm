@@ -1,10 +1,10 @@
 apiVersion: v1
 appVersion: 2.15.1
-description: '... todo '
+description: '...'
 home: https://github.com/KimSoungRyoul/locust-plugin-helm-charts
 icon: https://locust.io/static/img/logo.png
 maintainers:
 - email: kimsoungryoul@gmail.com
   name: kimsoungryoul
-name: locust-plugin
-version: 0.0.1
+name: locust-plugins
+version: 0.0.2
