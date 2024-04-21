@@ -1,7 +1,7 @@
 apiVersion: v1
 appVersion: 2.15.1
 description: '...'
-home: https://github.com/KimSoungRyoul/locust-plugin-helm-charts
+home: https://github.com/KimSoungRyoul/locust-plugins-helm
 icon: https://locust.io/static/img/logo.png
 maintainers:
 - email: kimsoungryoul@gmail.com
