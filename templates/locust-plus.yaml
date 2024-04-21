@@ -12,6 +12,10 @@ spec:
       labels:
         app: postgres
     spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       containers:
       - name: postgres
         image: {{ .Values.timescale_db.image }}
@@ -58,6 +62,10 @@ spec:
       labels:
         app: grafana
     spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       containers:
       - name: grafana
         image: "{{ .Values.locust_dashboard.image }}"
