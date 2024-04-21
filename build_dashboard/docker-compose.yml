@@ -2,7 +2,7 @@ version: "3"
 
 services:
   postgres:
-    image: cyberw/locust-timescale:6
+    image: sky5367/locust-timescale:6
     networks:
       - timenet
     expose:
@@ -18,7 +18,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
 
   grafana:
-    image: cyberw/locust-grafana:3
+    image: sky5367/locust-grafana:3
     environment:
       # these settings are not particularly safe, dont go exposing Grafana externally without changing this.
       - GF_AUTH_DISABLE_LOGIN_FORM=true
@@ -27,7 +27,7 @@ services:
       - GF_SECURITY_ALLOW_EMBEDDING=true
       - GF_LOG_LEVEL=warn # reduce log spamming. Remove this if you need to debug grafana.
     ports:
-      - 127.0.0.1:3000:3000
+      - 127.0.0.1:3001:3000
     networks:
       - timenet
     volumes:
