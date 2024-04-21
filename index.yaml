@@ -3,7 +3,7 @@ entries:
   locust-plugins:
   - apiVersion: v1
     appVersion: 2.15.1
-    created: "2024-04-21T14:51:47.904216+09:00"
+    created: "2024-04-21T19:37:23.940906+09:00"
     description: '...'
     digest: 7bd669e863e9142d25c8e9ce40152d6ef7f13520f0f36e718dff4ebe7fcfb415
     home: https://github.com/KimSoungRyoul/locust-plugin-helm-charts
@@ -15,4 +15,4 @@ entries:
     urls:
     - locust-plugins-0.0.2.tgz
     version: 0.0.2
-generated: "2024-04-21T14:51:47.903262+09:00"
+generated: "2024-04-21T19:37:23.939431+09:00"
