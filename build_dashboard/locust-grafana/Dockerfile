@@ -4,8 +4,8 @@ COPY *.sh /commands/
 RUN chown -R grafana /commands
 RUN apk add curl jq
 USER grafana
-RUN /run.sh & sleep 10 \
-    && cd /commands \
+RUN /run.sh & sleep 10
+RUN cd /commands \
     && ./grafana_setup.sh \
     && sleep 1
 
