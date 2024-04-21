@@ -10,6 +10,6 @@ RUN /run.sh & sleep 10 \
     && sleep 1
 
 FROM grafana/grafana-oss
-USER root
+USER grafana
 COPY --from=builder /usr/share/grafana /usr/share/grafana
 ENTRYPOINT ["run.sh"]
