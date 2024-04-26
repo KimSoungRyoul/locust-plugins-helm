@@ -62,7 +62,7 @@ replicaset.apps/locust-plugins-worker-6c4bd49c85             1         1        
 
 * `kubectl -n locust-plugins port-forward svc/locust-plugins-grafana 3000:3000`
 * http://localhost:3000
-### locust grafana reporter
+### locust grafana dashboard
 <img width="1744" alt="스크린샷 2024-04-27 오전 2 47 31" src="https://github.com/KimSoungRyoul/locust-plugins-helm/assets/24240623/4867ffe5-16c1-4922-9b0a-b0efec13bd95">
 <img width="1740" alt="스크린샷 2024-04-27 오전 2 47 22" src="https://github.com/KimSoungRyoul/locust-plugins-helm/assets/24240623/a67a82fa-66f1-4e3c-a4c1-ab62c2342bdf">
 <img width="1746" alt="스크린샷 2024-04-27 오전 2 47 11" src="https://github.com/KimSoungRyoul/locust-plugins-helm/assets/24240623/a972ca75-ca7f-467e-b846-36a773d6e7f8">
