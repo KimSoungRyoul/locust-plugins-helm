@@ -20,12 +20,12 @@
 {{- else if contains "ClusterIP" .Values.service.type }}
 Run this command:
 
-  # locust-webui (Run Your LoadTest)
+  # locust master UI (Run Your LoadTest)
   kubectl --namespace {{ .Release.Namespace }} port-forward service/{{ include "locust.fullname" . }} 8089:8089
 
   # locust-grafana (Monitoring Your LoadTest Report)
   kubectl --namespace {{ .Release.Namespace }} port-forward service/{{ include "locust.fullname" . }}-grafana {{ .Values.locust_dashboard.port }}:{{ .Values.locust_dashboard.port }}
 
-Then open in a browser(locust-webui): http://localhost:8089
+Then open in a browser(locust master UI): http://localhost:8089
 Then open in a browser(locust-grafana): http://localhost:{{ .Values.locust_dashboard.port }}
 {{- end }}

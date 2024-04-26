@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: "{{ template "locust.fullname" . }}-timescaledb"
+  name: "locust-plugins-timescaledb"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: locust-plugins
+      app: locust-plugins-timescaledb
   template:
     metadata:
       labels:
-        app: locust-plugins
+        app: locust-plugins-timescaledb
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       containers:
-      - name: timescaledb
+      - name: locust-plugins-timescaledb
         image: {{ .Values.timescale_db.image }}
         ports:
         - containerPort: 5432
@@ -45,7 +45,7 @@ spec:
   - port: {{ .Values.timescale_db.port }}
     targetPort: 5432
   selector:
-    app: "{{ template "locust.fullname" . }}-timescaledb"
+    app: "locust-plugins-timescaledb"
 
 ---
 apiVersion: apps/v1

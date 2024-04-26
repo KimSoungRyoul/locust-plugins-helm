@@ -3,7 +3,21 @@ entries:
   locust-plugins:
   - apiVersion: v1
     appVersion: 2.15.1
-    created: "2024-04-21T19:45:39.54569+09:00"
+    created: "2024-04-27T02:56:56.868222+09:00"
+    description: '...'
+    digest: c6b0a2d574c9e2b294a07fc66b73ea6ecb4977ecf8f7c21e3cf09b7d59fc34e1
+    home: https://github.com/KimSoungRyoul/locust-plugins-helm
+    icon: https://locust.io/static/img/logo.png
+    maintainers:
+    - email: kimsoungryoul@gmail.com
+      name: kimsoungryoul
+    name: locust-plugins
+    urls:
+    - locust-plugins-0.0.4.tgz
+    version: 0.0.4
+  - apiVersion: v1
+    appVersion: 2.15.1
+    created: "2024-04-27T02:56:56.867446+09:00"
     description: '...'
     digest: af39239ec407d011de5064b20ba23d0d50fb853d776b4b73bb3ec657cc336db8
     home: https://github.com/KimSoungRyoul/locust-plugins-helm
@@ -15,4 +29,4 @@ entries:
     urls:
     - locust-plugins-0.0.3.tgz
     version: 0.0.3
-generated: "2024-04-21T19:45:39.544511+09:00"
+generated: "2024-04-27T02:56:56.866663+09:00"

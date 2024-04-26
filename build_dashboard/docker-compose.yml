@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   postgres:
-    image: sky5367/locust-timescale:6
+    image: sky5367/locust-plugins-timescale:latest
     networks:
       - timenet
     expose:
@@ -18,7 +18,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
 
   grafana:
-    image: sky5367/locust-grafana:3
+    image: sky5367/locust-plugins-grafana:latest
     environment:
       # these settings are not particularly safe, dont go exposing Grafana externally without changing this.
       - GF_AUTH_DISABLE_LOGIN_FORM=true

@@ -58,7 +58,7 @@ spec:
           #- --expect-workers=3
           - --pgpassword={{ .Values.timescale_db.password }}
           - --pguser={{ .Values.timescale_db.user }}
-          - --pghost= "{{ template "locust.fullname" . }}-timescaledb.{{.Release.Namespace }}.svc.cluster.local"
+          - --pghost=locust-plugins-timescaledb.{{.Release.Namespace }}.svc.cluster.local
           - --pgport={{ .Values.timescale_db.port }}
           - --grafana-url="{{ template "locust.fullname" . }}-grafana.{{.Release.Namespace }}.svc.cluster.local:{{ .Values.locust_dashboard.port }}"
 {{- if .Values.master.args }}
