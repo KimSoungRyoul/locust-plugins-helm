@@ -11,6 +11,7 @@ minikube start --cpus 4 --memory 4G
 kubectl create ns locust-plugins
 helm repo add locust-plugins https://kimsoungryoul.github.io/locust-plugins-helm
 
+# see sample code more detail https://github.com/KimSoungRyoul/locust-plugins-helm/tree/main/locustfiles/example
 kubectl create configmap loadtest-lib --from-file locustfiles/example/lib -n locust-plugins
 kubectl create configmap loadtest-locustfile --from-file locustfiles/example/main.py -n locust-plugins
 
