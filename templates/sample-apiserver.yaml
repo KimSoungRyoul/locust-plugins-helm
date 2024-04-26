@@ -1,0 +1,42 @@
+{{- if .Values.sample_apiserver.enable -}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ template "locust.fullname" . }}-sample-apiserver"
+spec:
+  replicas: {{ .Values.sample_apiserver.replicas }}
+  selector:
+    matchLabels:
+      app: "{{ template "locust.fullname" . }}-sample-apiserver"
+  template:
+    metadata:
+      labels:
+        app: "{{ template "locust.fullname" . }}-sample-apiserver"
+    spec:
+      containers:
+        - name: "{{ template "locust.fullname" . }}-sample-apiserver"
+          image: sky5367/sample-apiserver:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "100M"
+            limits:
+              cpu: "2"
+              memory: "500M"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: "{{ template "locust.fullname" . }}-sample-apiserver"
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 8000
+      targetPort: 8000
+  selector:
+    app: "{{ template "locust.fullname" . }}-sample-apiserver"
+  {{ end }}

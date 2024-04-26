@@ -1,29 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: postgres
+  name: "{{ template "locust.fullname" . }}-timescaledb"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: postgres
+      app: locust-plugins
   template:
     metadata:
       labels:
-        app: postgres
+        app: locust-plugins
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       containers:
-      - name: postgres
+      - name: timescaledb
         image: {{ .Values.timescale_db.image }}
         ports:
         - containerPort: 5432
         env:
         - name: POSTGRES_PASSWORD
-          value: {{ .Values.timescale_db.pg_password }}
+          value: {{ .Values.timescale_db.password }}
         - name: TIMESCALEDB_TELEMETRY
           value: "off"
 #        volumeMounts:
@@ -38,36 +38,36 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: postgres
+  name: "locust-plugins-timescaledb"
 spec:
-  type: LoadBalancer
+  type: {{ .Values.timescale_db.service.type }}
   ports:
-  - port: {{ .Values.timescale_db.pg_port }}
+  - port: {{ .Values.timescale_db.port }}
     targetPort: 5432
   selector:
-    app: postgres
+    app: "{{ template "locust.fullname" . }}-timescaledb"
 
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: grafana
+  name: "{{ template "locust.fullname" . }}-grafana"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: grafana
+      app: "{{ template "locust.fullname" . }}-grafana"
   template:
     metadata:
       labels:
-        app: grafana
+        app: "{{ template "locust.fullname" . }}-grafana"
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       containers:
-      - name: grafana
+      - name: "{{ template "locust.fullname" . }}-grafana"
         image: "{{ .Values.locust_dashboard.image }}"
         ports:
         - containerPort: 3000
@@ -94,14 +94,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: grafana
+  name: "{{ template "locust.fullname" . }}-grafana"
 spec:
-  type: LoadBalancer
+  type: "{{ .Values.locust_dashboard.service.type }}"
   ports:
-  - port: 3000
+  - port: {{ .Values.locust_dashboard.port }}
     targetPort: 3000
   selector:
-    app: grafana
+    app: "{{ template "locust.fullname" . }}-grafana"
 #
 #---
 #apiVersion: v1

@@ -1,23 +1,16 @@
 # -*- coding: utf-8 -*-
-from locust import FastHttpUser, task, between
-from locust_plugins.connection_pools import FastHttpPool
-
-from lib.example_functions import choose_random_page
-
-default_headers = {
-    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36'}
+from locust import task, HttpUser
 
 
-class WebsiteUser(FastHttpUser):
-    wait_time = between(1, 2)
-
-    def on_start(self):
-        self.pool = FastHttpPool(user=self)
+class SampleAPIServerUser(HttpUser):
+    host = "http://127.0.0.1:8000"
 
     @task
-    def get_index(self):
-        self.pool.get("/", headers=default_headers)
+    def post_hello(self):
+        self.client.post("/hello", data={"foo": "bar"})
 
-    @task(3)
-    def get_random_page(self):
-        self.pool.get(choose_random_page(), headers=default_headers)
+# Debug Mode
+# if __name__ == "__main__":
+#     from locust import run_single_user
+#
+#     run_single_user(SampleAPIServerUser)

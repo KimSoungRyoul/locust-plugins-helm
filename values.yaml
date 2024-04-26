@@ -10,7 +10,8 @@ loadtest:
   # loadtest.locust_lib_configmap -- name of a configmap containing your lib (default uses the example lib)
   locust_lib_configmap: "loadtest-lib"
   # loadtest.locust_host -- the host you will load test
-  locust_host: https://www.google.com
+  # my-service.my-namespace.svc.cluster.local
+  locust_host: http://sample-apiserver-svc.locust-plugins.svc.cluster.local:8000
   # loadtest.pip_packages -- a list of extra python pip packages to install
   pip_packages: ['locust_plugins[dashboards]']
   # loadtest.environment -- environment variables used in the load test for both master and workers
@@ -42,7 +43,7 @@ image:
   pullPolicy: IfNotPresent
 
 service:
-  type: LoadBalancer
+  type: ClusterIP
   annotations: {}
   extraLabels: {}
 
@@ -142,14 +143,21 @@ worker:
 
 timescale_db:
   image: "sky5367/locust-plugins-timescale:latest"
-  pg_port: "5432"
-  pg_user: "postgres"
-  pg_password: "password"
-  pg_host: "postgres.ad-ai-loadtest.svc.cluster.local"
+  port: 5432 # do not fix
+  user: "postgres" # do not fix
+  password: "password" # do not fix
+  service:
+    type: LoadBalancer
 
 locust_dashboard:
   image: "sky5367/locust-plugins-grafana:latest"
-  grafana_host: "grafana.ad-ai-loadtest.svc.cluster.local:3000"
+  port: 4000
+  service:
+    type: LoadBalancer
+
+sample_apiserver:
+  enable: false
+  replicas: 1
 
 
 

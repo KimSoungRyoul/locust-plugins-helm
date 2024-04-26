@@ -56,11 +56,11 @@ spec:
           - --master
           - --timescale
           #- --expect-workers=3
-          - --pgpassword={{ .Values.timescale_db.pg_password }}
-          - --pguser={{ .Values.timescale_db.pg_user }}
-          - --pghost={{ .Values.timescale_db.pg_host }}
-          - --pgport={{ .Values.timescale_db.pg_port }}
-          - --grafana-url={{ .Values.locust_dashboard.grafana_host }}
+          - --pgpassword={{ .Values.timescale_db.password }}
+          - --pguser={{ .Values.timescale_db.user }}
+          - --pghost= "{{ template "locust.fullname" . }}-timescaledb.{{.Release.Namespace }}.svc.cluster.local"
+          - --pgport={{ .Values.timescale_db.port }}
+          - --grafana-url="{{ template "locust.fullname" . }}-grafana.{{.Release.Namespace }}.svc.cluster.local:{{ .Values.locust_dashboard.port }}"
 {{- if .Values.master.args }}
           {{- toYaml .Values.master.args | nindent 10 }}
 {{- end }}
