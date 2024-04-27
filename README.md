@@ -1,4 +1,4 @@
-# locust-plugins-helm ![Version: 0.31.5](https://img.shields.io/badge/Version-0.31.5-informational?style=flat-square) ![AppVersion: 2.15.1](https://img.shields.io/badge/AppVersion-2.15.1-informational?style=flat-square)
+# locust-plugins-helm [![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/locust-plugins)](https://artifacthub.io/packages/search?repo=locust-plugins)
 
 
 * based-on deliveryhero/locust
