@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
-from locust import task, HttpUser
+from locust import task, HttpUser, between
 
 
 class SampleAPIServerUser(HttpUser):
     host = "http://127.0.0.1:8000"
+    wait_time = between(0.1, 0.5)
 
     @task
     def post_hello(self):
